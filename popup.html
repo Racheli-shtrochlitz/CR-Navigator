@@ -4,27 +4,159 @@
     <meta charset="UTF-8" />
     <title>Code Review Navigator</title>
     <style>
+      * {
+        box-sizing: border-box;
+      }
+      
       body {
-        font-family: sans-serif;
-        padding: 10px;
-        width: 200px;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        margin: 0;
+        padding: 16px;
+        width: 280px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
       }
-      h3 {
-        margin-top: 0;
+      
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
       }
+      
+      .logo {
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+      
+      .title {
+        font-size: 18px;
+        font-weight: 600;
+        margin: 0;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      }
+      
+      .subtitle {
+        font-size: 12px;
+        opacity: 0.9;
+        margin: 4px 0 0 0;
+      }
+      
+      .status {
+        background: rgba(255,255,255,0.2);
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 16px;
+        backdrop-filter: blur(10px);
+      }
+      
+      .status-text {
+        font-size: 14px;
+        margin: 0 0 8px 0;
+        font-weight: 500;
+      }
+      
+      .status-indicator {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      
+      .status-indicator.enabled {
+        background: #4CAF50;
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.6);
+      }
+      
+      .status-indicator.disabled {
+        background: #f44336;
+        box-shadow: 0 0 8px rgba(244, 67, 54, 0.6);
+      }
+      
+      .controls {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      
       button {
-        display: block;
-        margin-top: 10px;
-        width: 100%;
-        padding: 5px;
+        flex: 1;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: rgba(255,255,255,0.9);
+        color: #333;
+      }
+      
+      button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      }
+      
+      button:active {
+        transform: translateY(0);
+      }
+      
+      .info {
+        background: rgba(255,255,255,0.15);
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      
+      .info-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      
+      .shortcut {
+        background: rgba(255,255,255,0.2);
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 11px;
+      }
+      
+      .footer {
+        text-align: center;
+        margin-top: 16px;
+        font-size: 11px;
+        opacity: 0.7;
       }
     </style>
   </head>
   <body>
-    <h3>Code Review Navigator</h3>
-    <p>Navigate functions/components quickly.</p>
-    <button id="enable">Enable</button>
-    <button id="disable">Disable</button>
+    <div class="header">
+      <div class="logo">🐸</div>
+      <h1 class="title">FocusFrog</h1>
+      <p class="subtitle">Code Review Navigator</p>
+    </div>
+    
+    <div class="status">
+      <div class="status-text">
+        <span id="statusIndicator" class="status-indicator"></span>
+        <span id="statusText">Loading...</span>
+      </div>
+    </div>
+    
+    <div class="controls">
+      <button id="toggle">Toggle</button>
+    </div>
+    
+    <div class="info">
+      <div class="info-title">💡 Quick Tips</div>
+      <div>• Click yellow function names to jump to definitions</div>
+      <div>• Use <span class="shortcut">Alt + ←</span> to go back</div>
+      <div>• Works on GitHub, GitLab, Bitbucket</div>
+    </div>
+    
+    <div class="footer">
+      v1.0 • Made with Rachel Shtrochlitz r0556735906@gmail.com 🐸
+    </div>
 
     <script src="popup.js"></script>
   </body>

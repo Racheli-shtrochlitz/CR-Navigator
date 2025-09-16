@@ -1,72 +1,222 @@
-<<<<<<< HEAD
-# focusfrog README
+# 🐸 FocusFrog - Code Review Navigator
 
-This is the README for your extension "focusfrog". After writing up a brief description, we recommend including the following sections.
+> **Make code reviews more lively!** Click on function names to jump to definitions with smooth scrolling and intelligent highlighting.
 
-## Features
+![Chrome Extension](https://img.shields.io/badge/Chrome-Extension-brightgreen)
+![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## ✨ Features
 
-For example if there is an image subfolder under your extension project workspace:
+### 🎯 **Smart Function Detection**
+- **JavaScript/TypeScript**: `function`, `const`, `class`, arrow functions
+- **Python**: `def` functions
+- **Go**: `func` functions  
+- **React Components**: JSX components, hooks, and class components
+- **Cross-language support** with intelligent parsing
 
-\!\[feature X\]\(images/feature-x.png\)
+### 🎨 **Visual Enhancements**
+- **Yellow highlighting** on function call sites
+- **Smooth scroll animation** to definitions
+- **Flash highlight** on destination (3.5s duration)
+- **Tooltip hints** on hover: "Click to jump to definition"
+- **Sticky header awareness** for perfect positioning
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+### ⌨️ **Keyboard Navigation**
+- **Alt + ←** : Go back to previous position
+- **Full keyboard support** for accessibility
 
-## Requirements
+### 🚀 **Performance & Reliability**
+- **Dynamic DOM observation** - works with lazy-loaded diffs
+- **Debounced scanning** - smooth performance during page updates
+- **Multi-platform support**: GitHub, GitLab, Bitbucket
+- **Smart caching** - avoids re-processing already marked elements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+## 🎮 How It Works
 
-## Extension Settings
+1. **Index Definitions**: Scans the page for function/component definitions
+2. **Highlight Calls**: Marks function call sites with yellow highlighting
+3. **Click to Jump**: Click any highlighted function name to scroll to its definition
+4. **Navigate Back**: Use Alt+← or the Back button to return to previous positions
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## 🛠️ Installation
 
-For example:
+### From Chrome Web Store
+*Coming soon!*
 
-This extension contributes the following settings:
+### Manual Installation
+1. Download or clone this repository
+2. Open Chrome and go to `chrome://extensions/`
+3. Enable "Developer mode" in the top right
+4. Click "Load unpacked" and select the FocusFrog folder
+5. The 🐸 icon will appear in your toolbar
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 🎯 Supported Platforms
 
-## Known Issues
+| Platform | Support Level | Features |
+|----------|---------------|----------|
+| **GitHub** | ✅ Full | Unified/Split diffs, Single file view |
+| **GitLab** | ✅ Full | Merge requests, Code diffs |
+| **Bitbucket** | ✅ Full | Pull requests, Source view |
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## 🔧 Configuration
 
-## Release Notes
+### Popup Controls
+Click the 🐸 icon to access:
+- **Enable/Disable** the extension
+- **Settings panel** (coming soon)
 
-Users appreciate release notes as you update your extension.
+### Keyboard Shortcuts
+- `Alt + ←` : Navigate back to previous scroll position
+- `Alt + →` : Navigate forward (coming soon)
 
-### 1.0.0
+## 🎨 Customization
 
-Initial release of ...
+### Highlight Colors
+The extension uses subtle yellow highlighting that adapts to your theme:
+```css
+background: rgba(255,255,0,0.3); /* Call sites */
+background: rgba(255,255,0,0.6); /* Flash highlight */
+```
 
-### 1.0.1
+### Flash Duration
+Currently set to 3.5 seconds - perfect for spotting the destination without being intrusive.
 
-Fixed issue #.
+## 🚀 Advanced Features
 
-### 1.1.0
+### Smart Detection
+- **Context-aware**: Distinguishes between definitions and calls
+- **Syntax-aware**: Works with syntax-highlighted code
+- **Multi-span support**: Handles cases where function names and `(` are in different HTML spans
 
-Added features X, Y, and Z.
+### Navigation Stack
+- **Unlimited history**: Every click is saved in the navigation stack
+- **Smart positioning**: Accounts for sticky headers and UI elements
+- **Smooth animations**: CSS-based transitions for professional feel
+
+## 🔍 Supported Code Patterns
+
+### JavaScript/TypeScript
+```javascript
+// Function declarations
+function myFunction() { }
+
+// Arrow functions  
+const myArrow = () => { }
+
+// Async functions
+const myAsync = async () => { }
+
+// Class definitions
+class MyComponent { }
+
+// React components
+const MyReactComponent = () => { return <div />; }
+```
+
+### Python
+```python
+def my_function():
+    pass
+
+class MyClass:
+    def method(self):
+        pass
+```
+
+### Go
+```go
+func myFunction() {
+    // implementation
+}
+```
+
+## 🎯 Use Cases
+
+### Code Reviews
+- **Jump between functions** without losing your place
+- **Understand call flows** by following function references
+- **Navigate large diffs** efficiently
+
+### Code Exploration
+- **Discover function relationships** through visual highlighting
+- **Learn codebases** by following execution paths
+- **Debug issues** by jumping to problem areas
+
+## 🛡️ Privacy & Security
+
+- **No data collection**: Everything runs locally in your browser
+- **No external requests**: No analytics or tracking
+- **Minimal permissions**: Only requires access to code review pages
+- **Open source**: Full transparency in the codebase
+
+## 🐛 Troubleshooting
+
+### Highlighting Not Working?
+1. **Refresh the page** after enabling the extension
+2. **Check the site**: Ensure you're on a supported platform (GitHub/GitLab/Bitbucket)
+3. **Expand collapsed sections**: Only visible code is indexed
+4. **Verify function names**: Definitions and calls must be on the same page
+
+### Performance Issues?
+- The extension automatically limits processing for pages with >200 definitions
+- Debounced scanning prevents excessive DOM manipulation
+- Smart caching avoids re-processing elements
+
+## 🚀 Roadmap
+
+### Coming Soon
+- [ ] **Cross-file navigation** - jump between files in the same PR
+- [ ] **Custom highlight colors** - user-configurable themes
+- [ ] **Forward navigation** - Alt+→ to go forward in history
+- [ ] **Mini-map view** - function list for quick navigation
+- [ ] **Import/Export detection** - follow dependencies across files
+
+### Future Enhancements
+- [ ] **Multi-language support** - Rust, C++, Java, etc.
+- [ ] **IDE integration** - VS Code, IntelliJ compatibility
+- [ ] **Team features** - shared navigation preferences
+- [ ] **Analytics dashboard** - code review productivity metrics
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how to get started:
+
+### Development Setup
+1. Clone the repository
+2. Make your changes
+3. Test on GitHub/GitLab/Bitbucket PR pages
+4. Submit a pull request
+
+### Areas for Contribution
+- **Language support**: Add detection for new programming languages
+- **Platform support**: Extend to other code hosting platforms
+- **UI/UX improvements**: Enhance the visual experience
+- **Performance optimization**: Improve scanning and highlighting speed
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- **GitHub** for the amazing code review interface
+- **GitLab** and **Bitbucket** for comprehensive diff views
+- **Chrome Extensions team** for the powerful manifest v3 API
+- **Open source community** for inspiration and feedback
+
+## 📞 Support
+
+- **Issues**: [GitHub Issues](https://github.com/your-repo/focusfrog/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/your-repo/focusfrog/discussions)
+- **Email**: support@focusfrog.dev
 
 ---
 
-## Following extension guidelines
+<div align="center">
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+**Made with 🐸 by developers, for developers**
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+[⭐ Star this repo](https://github.com/your-repo/focusfrog) • [🐛 Report bugs](https://github.com/your-repo/focusfrog/issues) • [💡 Request features](https://github.com/your-repo/focusfrog/discussions)
 
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+</div>

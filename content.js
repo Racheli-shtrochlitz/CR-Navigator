@@ -9,10 +9,15 @@ chrome.storage?.local.get("enabled", (data) => {
 
 function scrollToElement(el) {
   historyStack.push(window.scrollY);
-  const offset = getStickyOffset();
   const rect = el.getBoundingClientRect();
-  const targetTop = Math.max(0, window.scrollY + rect.top - offset - 10);
-  window.scrollTo({ top: targetTop, behavior: "smooth" });
+  const elementTop = window.scrollY + rect.top;
+  const elementHeight = rect.height;
+  const viewportHeight = window.innerHeight;
+  
+  // Calculate target position to center the element in the viewport
+  const targetTop = elementTop - (viewportHeight / 2) + (elementHeight / 2);
+  
+  window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
   flashAt(el);
 }
 
@@ -132,7 +137,6 @@ function markCallSites(defIndex) {
   const nameGroup = names.map(escapeRegex).join("|");
   if (!nameGroup) return;
 
-  // Match just the name; we'll verify a following '(' possibly across node boundaries
   const callNameRegex = new RegExp(`\\b(${nameGroup})\\b`, "g");
 
   function createCallSpan(name) {
@@ -291,4 +295,27 @@ window.addEventListener("load", () => {
       goBack();
     }
   });
+});
+
+// Listen for messages from popup
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "toggle") {
+    enabled = message.enabled;
+    if (enabled) {
+      markFunctions();
+      addBackButton();
+    } else {
+      // Remove all highlights and back button
+      document.querySelectorAll("[data-ff-call]").forEach(span => {
+        span.style.background = "";
+        span.style.cursor = "";
+        span.removeAttribute("data-ff-call");
+      });
+      document.querySelectorAll("[data-ff-marked]").forEach(el => {
+        el.removeAttribute("data-ff-marked");
+      });
+      const backBtn = document.getElementById("ff-back-btn");
+      if (backBtn) backBtn.remove();
+    }
+  }
 });
