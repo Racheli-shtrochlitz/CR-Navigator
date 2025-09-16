@@ -207,9 +207,9 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/focusfrog/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-repo/focusfrog/discussions)
-- **Email**: support@focusfrog.dev
+- **Issues**: [GitHub Issues](https://github.com/Racheli-shtrochlitz/CR-Navigator/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Racheli-shtrochlitz/CR-Navigator/discussions)
+- **Email**: rachel35906@gmail.com
 
 ---
 
@@ -217,6 +217,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 **Made with 🐸 by developers, for developers**
 
-[⭐ Star this repo](https://github.com/your-repo/focusfrog) • [🐛 Report bugs](https://github.com/your-repo/focusfrog/issues) • [💡 Request features](https://github.com/your-repo/focusfrog/discussions)
+[⭐ Star this repo](https://github.com/Racheli-shtrochlitz/CR-Navigator) • [🐛 Report bugs](https://github.com/Racheli-shtrochlitz/CR-Navigator/issues) • [💡 Request features](https://github.com/Racheli-shtrochlitz/CR-Navigator/discussions)
 
 </div>
